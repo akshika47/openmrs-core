@@ -346,9 +346,11 @@ public interface OrderService extends OpenmrsService {
 	/**
 	 * Discontinues an order. Creates a new order that discontinues the orderToDiscontinue
 	 * 
+	 *
 	 * @param orderToDiscontinue
 	 * @param reasonCoded
 	 * @param discontinueDate
+	 * @param Provider
 	 * @return the new order that discontinued orderToDiscontinue
 	 * @throws APIException if the <code>action</code> of orderToDiscontinue is
 	 *             <code>Order.Action.DISCONTINUE</code>
@@ -361,7 +363,8 @@ public interface OrderService extends OpenmrsService {
 	 * @should fail for a discontinuation order
 	 */
 	@Authorized(PrivilegeConstants.ADD_ORDERS)
-	public Order discontinueOrder(Order orderToDiscontinue, Concept reasonCoded, Date discontinueDate) throws Exception;
+	public Order discontinueOrder(Order orderToDiscontinue, Concept reasonCoded, Date discontinueDate, User Provider)
+	        throws Exception;
 	
 	/**
 	 * Discontinues an order. Creates a new order that discontinues the orderToDiscontinue.

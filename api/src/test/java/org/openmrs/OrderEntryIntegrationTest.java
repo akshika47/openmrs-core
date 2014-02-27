@@ -135,7 +135,7 @@ public class OrderEntryIntegrationTest extends BaseContextSensitiveTest {
 		int ordersCount = orderService.getActiveOrders(patient, null, null, null).size();
 		
 		Concept discontinueReason = Context.getConceptService().getConcept(1);
-		Order discontinuationOrder1 = orderService.discontinueOrder(firstOrderToDiscontinue, discontinueReason, null);
+		Order discontinuationOrder1 = orderService.discontinueOrder(firstOrderToDiscontinue, discontinueReason, null, null);
 		assertEquals(firstOrderToDiscontinue, discontinuationOrder1.getPreviousOrder());
 		
 		//Lets discontinue another order with reason being a string instead of concept
