@@ -2317,6 +2317,11 @@
             <replace replace="CHAR(38)" with="UNIQUEIDENTIFIER DEFAULT NEWSEQUENTIALID()"/>
         </modifySql>
     </changeSet>
+    <changeSet id="201401101644" author="Akshika">
+        <preConditions onFail="HALT" onFailMessage="Add some descriptive message">
+            <sqlCheck expectedResult="0">select count(*) from orders where startDate is NULL or orderer is NULL or encounter is NULL</sqlCheck>
+        </preConditions>
+    </changeSet>
     <changeSet id="20110426-11701-create-provider-table" author="dkayiwa">
  		<preConditions onFail="MARK_RAN">
  			<not>
