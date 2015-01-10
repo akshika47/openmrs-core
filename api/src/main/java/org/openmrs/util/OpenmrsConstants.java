@@ -109,6 +109,7 @@ public final class OpenmrsConstants {
 		return getOpenmrsProperty("openmrs.version.short");
 	}
 	
+<<<<<<< HEAD
 	private static String getVersion() {
 		return getOpenmrsProperty("openmrs.version");
 	}
@@ -117,16 +118,43 @@ public final class OpenmrsConstants {
 		InputStream file = OpenmrsConstants.class.getClassLoader().getResourceAsStream("org/openmrs/api/openmrs.properties");
 		if (file == null) {
 			log.error("Unable to find the openmrs.properties file");
+=======
+	/**
+	 * Somewhat hacky method to fetch the version from the maven pom.properties file. <br/>
+	 * This method should not be used unless in a dev environment. The preferred way to get the
+	 * version is from the manifest in the api jar file. More detail is included in the properties
+	 * there.
+	 * 
+	 * @return version number defined in maven pom.xml file(s)
+	 * @see #OPENMRS_VERSION_SHORT
+	 * @see #OPENMRS_VERSION
+	 */
+	
+	private static String getVersion() {
+		Properties props = new Properties();
+		
+		// Get hold of the path to the properties file
+		// (Maven will make sure it's on the class path)
+		java.net.URL url = OpenmrsConstants.class.getClassLoader().getResource(
+		    "META-INF/maven/org.openmrs.api/openmrs-api/pom.properties");
+		if (url == null) {
+			log.error("Unable to find pom.properties file built by maven");
+>>>>>>> parent of a47d42e... TRUNK-3644 Define which resources to load for module based on OpenMRS version
 			return null;
 		}
 		
 		try {
+<<<<<<< HEAD
 			Properties props = new Properties();
 			props.load(file);
 			
 			file.close();
 			
 			return props.getProperty(property);
+=======
+			props.load(url.openStream());
+			return props.getProperty("version"); // this will return something like "1.9.0-SNAPSHOT" in dev environments
+>>>>>>> parent of a47d42e... TRUNK-3644 Define which resources to load for module based on OpenMRS version
 		}
 		catch (IOException e) {
 			log.error("Unable to parse the openmrs.properties file", e);

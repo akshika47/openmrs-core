@@ -99,8 +99,6 @@ public final class Module {
 	
 	private boolean mandatory = Boolean.FALSE;
 	
-	private List<ModuleConditionalResource> conditionalResources = new ArrayList<ModuleConditionalResource>();
-	
 	// keep a reference to the file that we got this module from so we can delete
 	// it if necessary
 	private File file = null;
@@ -411,10 +409,6 @@ public final class Module {
 	 */
 	public List<String> getAwareOfModules() {
 		return awareOfModulesMap == null ? null : new ArrayList<String>(awareOfModulesMap.keySet());
-	}
-	
-	public String getAwareOfModuleVersion(String awareOfModule) {
-		return awareOfModulesMap == null ? null : awareOfModulesMap.get(awareOfModule);
 	}
 	
 	/**
@@ -812,6 +806,7 @@ public final class Module {
 			advicePoint.disposeClassInstance();
 		}
 	}
+<<<<<<< HEAD
 	
 	public List<ModuleConditionalResource> getConditionalResources() {
 		return conditionalResources;
@@ -824,4 +819,6 @@ public final class Module {
 	public boolean isCore() {
 		return ModuleConstants.CORE_MODULES.containsKey(getModuleId());
 	}
+=======
+>>>>>>> parent of a47d42e... TRUNK-3644 Define which resources to load for module based on OpenMRS version
 }

@@ -806,7 +806,10 @@
 		<context:include-filter type="annotation" expression="org.openmrs.annotation.Handler"/>
 		<context:include-filter type="custom" expression="org.openmrs.annotation.OpenmrsProfileIncludeFilter" />
 		<context:exclude-filter type="custom" expression="org.openmrs.util.TestTypeFilter"/> <!-- Excludes classes with unit test super classes -->
+<<<<<<< HEAD
 		<context:exclude-filter type="custom" expression="org.openmrs.annotation.OpenmrsProfileExcludeFilter" />
+=======
+>>>>>>> parent of a47d42e... TRUNK-3644 Define which resources to load for module based on OpenMRS version
 	</context:component-scan>
 
     <cache:annotation-driven cache-manager="apiCacheManager" />
